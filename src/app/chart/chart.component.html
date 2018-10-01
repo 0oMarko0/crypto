@@ -1,0 +1,11 @@
+<div style="display: block">
+  <canvas baseChart width="800" height="400"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>
+<button class="btn btn-chartjs" (click)="randomize()">Update</button>

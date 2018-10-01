@@ -11,6 +11,6 @@ export class AppComponent {
 
   onFrequencyChange(event) {
     this.frequency = event;
-    console.log(event);
+    console.log('this.frequency', this.frequency);
   }
 }
