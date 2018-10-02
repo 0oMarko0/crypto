@@ -1,0 +1,29 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let bloc of blocs; let i = index"
+                       (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        M - {{i}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{renderBloc(bloc, 50)}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="container">
+      <div class="row my-3">
+        <div class="col-6">
+          <mat-card class="card">
+            {{bloc.join('')}}
+          </mat-card>
+        </div>
+        <div class="col-6">
+          <mat-card class="card">
+            Ic(i) = {{coincidenceIndex}}
+          </mat-card>
+        </div>
+      </div>
+      <button class="btn btn-dark" (click)="onClickSendText(bloc)">See frequency</button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
