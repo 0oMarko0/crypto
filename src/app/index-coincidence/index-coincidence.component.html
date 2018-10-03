@@ -1,0 +1,21 @@
+<table class="table mt-3">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col" *ngFor="let letter of alphabet">
+      {{letter}}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">ni</th>
+    <th scope="row" *ngFor="let letter of letterCount">{{letter}}</th>
+  </tr>
+  <tr>
+    <th scope="row">ni*(ni-1)</th>
+    <th scope="row" *ngFor="let letter of letterCount">{{((letter)*(letter-1)) || 0}}</th>
+  </tr>
+
+  </tbody>
+</table>

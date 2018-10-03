@@ -16,7 +16,7 @@ export class TextInputService {
   private _letterFrequency = new Subject<number[]>();
   private _transpose = new Subject<string[][]>();
 
-  private alphabet: string[] =
+  private _alphabet: string[] =
     ['a', 'b', 'c', 'd', 'e', 'f', 'g',
       'h', 'i', 'j', 'k', 'l', 'm', 'n',
       'o', 'p', 'q', 'r', 's', 't', 'u',
@@ -24,8 +24,12 @@ export class TextInputService {
 
   constructor() { }
 
+  public alphabet() {
+    return this._alphabet;
+  }
+
   public emitText(text: string): void {
-    this._textInput.next(text.toLowerCase());
+    this._textInput.next(text.toLowerCase().trim());
   }
 
   public textEvent(): Observable<string> {
@@ -46,6 +50,14 @@ export class TextInputService {
 
   public emitMatrixTranspose(text: string, size): void {
     this._transpose.next(this.transpose(this.convertTextToMatrix(text, size)));
+  }
+
+  public letterCountArray(text) {
+    const letterCount = [];
+    this.letterCount(text).forEach((letter) => {
+      letterCount[letter.index] = letter.count;
+    });
+    return letterCount;
   }
 
   public letterFrequency(text: string): number[] {
@@ -72,7 +84,7 @@ export class TextInputService {
 
     while (index--) {
       currentLetter = textArray[index];
-      if (this.alphabet.includes(currentLetter)) {
+      if (this._alphabet.includes(currentLetter)) {
         letterDictoanory[currentLetter] = (letterDictoanory[currentLetter] || 0) + 1;
       }
     }
@@ -89,8 +101,8 @@ export class TextInputService {
     });
   }
 
-  private mapCharToIndex(char: String): number {
-    return this.alphabet.indexOf(char.toLowerCase());
+  public mapCharToIndex(char: String): number {
+    return this._alphabet.indexOf(char.toLowerCase());
   }
 
   public convertTextToMatrix(text: String, rowSize: number): string[][] {
@@ -116,7 +128,7 @@ export class TextInputService {
 
     for (let col = 0; col < n; col++) {
       for (let row = 0; row < m; row++) {
-        if (this.alphabet.includes(matrix[row][col])) {
+        if (this._alphabet.includes(matrix[row][col])) {
           newRow.push(matrix[row][col]);
         }
       }

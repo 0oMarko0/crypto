@@ -7,7 +7,7 @@
         M - {{i}}
       </mat-panel-title>
       <mat-panel-description>
-        {{renderBloc(bloc, 50)}}
+        IC = {{coincidenceIndexForBloc(bloc.join(''))}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div class="container">
@@ -19,7 +19,7 @@
         </div>
         <div class="col-6">
           <mat-card class="card">
-            Ic(i) = {{coincidenceIndex}}
+            Ic(i) = {{coincidenceIndexForBloc(bloc.join(''))}}
           </mat-card>
         </div>
       </div>

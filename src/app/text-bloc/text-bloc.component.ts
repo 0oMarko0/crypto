@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CryptoService } from '../crypto.service';
 import { KeySizeService } from '../key-size/key-size.service';
 import { TabGroupService } from '../tab-group/tab-group.service';
 import { TextInputService } from '../text-input/text-input.service';
@@ -18,7 +19,8 @@ export class TextBlocComponent implements OnInit {
 
   constructor(private keySizeService: KeySizeService,
               private textInputService: TextInputService,
-              private tabGroupService: TabGroupService) { }
+              private tabGroupService: TabGroupService,
+              private crypto: CryptoService) { }
 
   ngOnInit() {
     this.textInputService.textEvent().subscribe((text: string) => {
@@ -52,4 +54,7 @@ export class TextBlocComponent implements OnInit {
     this.blocs = this.textInputService.transpose(matrix);
   }
 
+  coincidenceIndexForBloc(text: string) {
+    return this.crypto.indexOfCoincidence(this.textInputService.letterCountArray(text), 5);
+  }
 }

@@ -1,0 +1,43 @@
+<div>
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Option
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="container">
+        <div class="row my-3">
+          <div class="col-6">
+            <mat-form-field>
+              <mat-select placeholder="Encryption Algorrithme">
+                <mat-option *ngFor="let cipher of encryptions" [value]="cipher">
+                  {{cipher}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <div *ngFor="let i of [1, 2, 4, 5]">
+              <mat-form-field class="mr-3" appearance="fill">
+                <mat-label>Key</mat-label>
+                <input matInput placeholder="Placeholder">
+                <mat-icon matSuffix>vpn_key</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Offset</mat-label>
+                <input matInput placeholder="Placeholder">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-card class="card mt-5">
+    {{encryptedText}}
+  </mat-card>
+</div>
