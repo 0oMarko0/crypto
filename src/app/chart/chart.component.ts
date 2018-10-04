@@ -26,7 +26,6 @@ export class ChartComponent implements OnInit {
     this.loadChartData();
     this.textService.letterFrequencyEvent()
       .subscribe((frequency: number[]) => {
-        console.log('Frequency');
         this.updateChart(frequency);
       });
   }
@@ -47,12 +46,4 @@ export class ChartComponent implements OnInit {
     this.axisLabel = this.chartService.axisLabel();
   }
 
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
 }

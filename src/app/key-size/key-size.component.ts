@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { KeySizeService } from './key-size.service';
+import { KeyService } from './key.service';
 
 @Component({
   selector: 'app-key-size',
@@ -8,7 +8,7 @@ import { KeySizeService } from './key-size.service';
 })
 export class KeySizeComponent implements OnInit {
 
-  constructor(private keySizeService: KeySizeService) { }
+  constructor(private keySizeService: KeyService) { }
 
   ngOnInit() {
   }

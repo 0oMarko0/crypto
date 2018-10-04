@@ -23,6 +23,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { IndexCoincidenceComponent } from './index-coincidence/index-coincidence.component';
+import { KeyComponent } from './key/key.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { IndexCoincidenceComponent } from './index-coincidence/index-coincidence
     SummaryComponent,
     TextEncryptionComponent,
     TextDecryptionComponent,
-    IndexCoincidenceComponent
+    IndexCoincidenceComponent,
+    KeyComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CryptoService } from '../crypto.service';
+import { KeyService } from '../key-size/key.service';
 import { TextInputService } from '../text-input/text-input.service';
 
 @Component({
@@ -10,14 +11,27 @@ import { TextInputService } from '../text-input/text-input.service';
 export class TextDecryptionComponent implements OnInit {
 
   public decryptionText: string;
+  private currentEncryptedText = '';
+  private currentKey = 3;
 
   constructor(private textInputService: TextInputService,
-              private crypto: CryptoService) { }
+              private crypto: CryptoService,
+              private keyService: KeyService) { }
 
   ngOnInit() {
-    this.crypto.ecryptedTextEvent().subscribe((text: string) => {
-      this.decryptionText = this.crypto.affineDecryption(text, 1, 3);
+    this.textInputService.textEvent().subscribe((text: string) => {
+      this.currentEncryptedText = text;
+      this.update();
     });
+
+    this.keyService.keyValueEvent().subscribe((key: number) => {
+      this.currentKey = key;
+      this.update();
+    });
+  }
+
+  private update() {
+    this.decryptionText = this.crypto.affineDecryption(this.currentEncryptedText, 1, this.currentKey);
   }
 
 }

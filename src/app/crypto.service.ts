@@ -47,23 +47,22 @@ export class CryptoService {
         const substitutionLetterIndex = this.affineDecryptionCypher(textLetterIndex, decryptionKey, offset);
         clearText.push(alphabet[substitutionLetterIndex]);
       }
+    } else {
+      console.warn('Key not valid');
     }
 
     return clearText.join('');
   }
 
-  indexOfCoincidence(letter: number[], decimals: number) {
+  indexOfCoincidence(letter: number[], text: string, decimals: number) {
     let IC = 0;
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     const numberOfLetter = letter.length > 0 ? letter.reduce(reducer) : 0;
     letter.forEach((letterCount) => {
-      if (letterCount > 0) {
-        IC += ((letterCount * (letterCount - 1)) / (numberOfLetter * (numberOfLetter - 1)));
-      }
+        IC += ((letterCount / numberOfLetter) * ((letterCount - 1) / (numberOfLetter - 1)));
     });
 
-    const precision = Math.pow(10, decimals);
-    return Math.round(IC * precision) / precision;
+    return IC;
   }
 
   private affineCypher(letterIndex: number, key: number, offset: number) {

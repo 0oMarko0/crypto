@@ -44,14 +44,6 @@ export class TextInputService {
     this._letterFrequency.next(this.letterFrequency(text.toLowerCase()));
   }
 
-  public matrixTransposeEvent(): Observable<string[][]> {
-    return this._transpose.asObservable();
-  }
-
-  public emitMatrixTranspose(text: string, size): void {
-    this._transpose.next(this.transpose(this.convertTextToMatrix(text, size)));
-  }
-
   public letterCountArray(text) {
     const letterCount = [];
     this.letterCount(text).forEach((letter) => {
@@ -105,37 +97,22 @@ export class TextInputService {
     return this._alphabet.indexOf(char.toLowerCase());
   }
 
-  public convertTextToMatrix(text: String, rowSize: number): string[][] {
-    const textArray = text.split('');
-    let row = 0;
-    let index = 0;
-    const matrix = [[]];
+  public mapIndexToChar(index: number): string {
+    return this._alphabet[index % 26];
+  }
 
-    while (index < text.length) {
-      matrix[row] = textArray.splice(0, rowSize);
-      row++;
-      index += rowSize;
+  public blocOfText(text: string, keySize: number) {
+    const textArray: string[] = text.trim().split('');
+    const matrix = [[]];
+    let row = [];
+    for (let offset = 0; offset < keySize; offset++) {
+      for (let i = 0; i < text.length; i++) {
+        row.push(textArray[(i * keySize) + offset]);
+      }
+      matrix.push(row);
+      row = [];
     }
 
     return matrix;
-  }
-
-  public transpose(matrix: string[][]): string[][] {
-    const m = matrix.length;       // Matrix Row
-    const n = matrix[0].length;   // Matrix col
-    const transpose = [];
-    let newRow = [];
-
-    for (let col = 0; col < n; col++) {
-      for (let row = 0; row < m; row++) {
-        if (this._alphabet.includes(matrix[row][col])) {
-          newRow.push(matrix[row][col]);
-        }
-      }
-      transpose.push(newRow);
-      newRow = [];
-    }
-
-    return transpose;
   }
 }

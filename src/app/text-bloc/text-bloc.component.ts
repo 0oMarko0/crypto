@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CryptoService } from '../crypto.service';
-import { KeySizeService } from '../key-size/key-size.service';
+import { KeyService } from '../key-size/key.service';
 import { TabGroupService } from '../tab-group/tab-group.service';
 import { TextInputService } from '../text-input/text-input.service';
 
@@ -17,7 +17,7 @@ export class TextBlocComponent implements OnInit {
   public coincidenceIndex = 0.067;
   public blocs: string[][] = [[]];
 
-  constructor(private keySizeService: KeySizeService,
+  constructor(private keySizeService: KeyService,
               private textInputService: TextInputService,
               private tabGroupService: TabGroupService,
               private crypto: CryptoService) { }
@@ -39,22 +39,11 @@ export class TextBlocComponent implements OnInit {
     this.tabGroupService.emitTabIndex(0);
   }
 
-  renderBloc(bloc: string[], truncation: number): string {
-    const blocSize = bloc.length;
-
-    if (blocSize < truncation) {
-      return bloc.join('');
-    } else {
-      return bloc.slice(0, truncation).join('') + ' ... ';
-    }
-  }
-
   updateBloc() {
-    const matrix = this.textInputService.convertTextToMatrix(this.currentText, this.keySize);
-    this.blocs = this.textInputService.transpose(matrix);
+    this.blocs = this.textInputService.blocOfText(this.currentText, this.keySize);
   }
 
   coincidenceIndexForBloc(text: string) {
-    return this.crypto.indexOfCoincidence(this.textInputService.letterCountArray(text), 5);
+    return this.crypto.indexOfCoincidence(this.textInputService.letterCountArray(text), text, 5);
   }
 }
