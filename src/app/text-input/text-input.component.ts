@@ -20,9 +20,10 @@ export class TextInputComponent implements OnInit {
 
   ngOnInit() {
     this.textInput.valueChanges.subscribe((value: string) => {
-      this.currentText = value.trim().replace(/\n/g, '');
-      this.textService.emitText(value);
-      this.textService.emitLetterFrequency(value);
+      this.currentText = value.replace(/\n/g, '').replace(/\s/g,'');
+      console.log('this.currentText: ', this.currentText);
+      this.textService.emitText(this.currentText);
+      this.textService.emitLetterFrequency(this.currentText);
     });
 
     this.keyService.keyValueEvent().subscribe(() => {

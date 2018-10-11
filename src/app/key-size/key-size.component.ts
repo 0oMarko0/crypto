@@ -13,8 +13,8 @@ export class KeySizeComponent implements OnInit {
   ngOnInit() {
   }
 
-  onValueChange(value: number) {
-    this.keySizeService.emitKeySize(value);
+  onValueChange(value: any) {
+    this.keySizeService.emitKeySize(value.value);
   }
 
 }

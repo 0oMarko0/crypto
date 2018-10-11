@@ -11,8 +11,9 @@ export class KeyService {
 
   constructor() { }
 
-  public emitKeySize(value: any) {
-    this.keySize.next(value.value);
+  public emitKeySize(value: number) {
+    console.log('value');
+    this.keySize.next(value);
   }
 
   public keySizeEvent(): Observable<number> {

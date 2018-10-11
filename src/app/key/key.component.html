@@ -1,0 +1,19 @@
+<div class="w-100 d-flex flex-column align-items-center mt-5">
+  <div class="form-size d-flex w-100 justify-content-end">
+    <h6 *ngIf="key">Key: {{key}}</h6>
+  </div>
+  <div class="form-size w-100">
+    <mat-slider name="slider" class="w-100"
+                thumbLabel
+                min="1"
+                max="26"
+                step="1"
+                (change)="onValueChange($event)"></mat-slider>
+  </div>
+  <!--<form class="example-form">-->
+    <!--<mat-form-field class="example-full-width">-->
+      <!--<input [formControl]="key" matInput placeholder="Encryption key" value="">-->
+    <!--</mat-form-field>-->
+  <!--</form>-->
+</div>
+

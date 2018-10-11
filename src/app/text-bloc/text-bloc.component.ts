@@ -39,6 +39,10 @@ export class TextBlocComponent implements OnInit {
     this.tabGroupService.emitTabIndex(0);
   }
 
+  onClickDecryptText() {
+    this.tabGroupService.emitTabIndex(4);
+  }
+
   updateBloc() {
     this.blocs = this.textInputService.blocOfText(this.currentText, this.keySize);
   }
