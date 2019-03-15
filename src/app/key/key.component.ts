@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSlider } from '@angular/material';
-import { CryptoService } from '../crypto.service';
+import { CryptoService } from '../utils/crypto.service';
 import { KeyService } from '../key-size/key.service';
 import { TextInputService } from '../text-input/text-input.service';
 

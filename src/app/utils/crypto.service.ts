@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { TextInputService } from './text-input/text-input.service';
+import { TextInputService } from '../text-input/text-input.service';
 
 @Injectable({
   providedIn: 'root'

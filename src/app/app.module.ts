@@ -24,7 +24,12 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { IndexCoincidenceComponent } from './index-coincidence/index-coincidence.component';
 import { KeyComponent } from './key/key.component';
-
+import { MonoalphabeticComponent } from './pages/monoalphabetic/monoalphabetic.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
+import { OldComponent } from './pages/old/old.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -38,11 +43,16 @@ import { KeyComponent } from './key/key.component';
     TextEncryptionComponent,
     TextDecryptionComponent,
     IndexCoincidenceComponent,
-    KeyComponent
+    KeyComponent,
+    MonoalphabeticComponent,
+    NotFoundComponent,
+    OldComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    RouterModule.forRoot(appRoutes),
     MatInputModule,
     ChartsModule,
     ReactiveFormsModule,
