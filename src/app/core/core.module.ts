@@ -3,16 +3,19 @@ import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 @NgModule({
   imports: [
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   declarations: [
     HeaderComponent,
   ],
   exports: [HeaderComponent]
 })
-export class CoreModule{ }
+export class CoreModule {}
