@@ -1,8 +1,27 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row class="d-flex">
-    <span>Test</span>
-    <a class="link" href="https://github.com/0oMarko0/crypto">
-      <i class="fab fa-github mx-2"></i>
-    </a>
-    </mat-toolbar-row>
+<mat-toolbar color="accent">
+  <mat-toolbar-row class="justify-content-between">
+    <span>Crypto</span>
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voicemail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+      <a class="link" href="https://github.com/0oMarko0/crypto">
+        <i class="fab fa-github mx-2"></i>
+      </a>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>

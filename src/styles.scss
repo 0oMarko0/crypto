@@ -15,3 +15,8 @@ html, body, app-root, .app-frame {
   box-sizing: border-box;
   color: #e0e0e0;
 }
+
+button:focus {
+  outline: none;
+  border: 0;
+}
